@@ -4,7 +4,7 @@ pipeline {
         string(defaultValue: 'default', name: 'skip-checks', trim: true)
         string(defaultValue: 'default', name: 'enable-checks', trim: true)
         string(defaultValue: '', name: 'args', trim: true)
-        string(defaultValue: 'default', name: 'kubernetes-manifest', trim: true)
+        string(defaultValue: 'kubernetes-manifest', name: 'kubernetes-manifest', trim: true)
     }
     stages {
         stage("Chkk") {
