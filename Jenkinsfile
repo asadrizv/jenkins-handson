@@ -13,10 +13,10 @@ pipeline {
                curl -Lo chkk https://chkk-artifacts-downloads.s3.amazonaws.com/dl/v0.0.1/chkk-darwin-amd64;
                export CHKK_ACCESS_TOKEN=$CHKK_ACCESS_TOKEN;
                chmod +x chkk;
-               echo ${kubernetes-manifest}
-               echo ${enable-checks}
-               echo ${skip-checks}
-               ./chkk --file kubernetes-manifest.yaml --run-check ${enable-checks} --skip-check ${skip-checks}
+               echo ${params.kubernetes-manifest}
+               echo ${params.ENABLE-CHECKS}
+               echo ${params.SKIP-CHECKS}
+               ./chkk --file kubernetes-manifest.yaml --run-check ${ENABLE-CHECKS} --skip-check ${SKIP-CHECKS}
                '''
             }
         }
