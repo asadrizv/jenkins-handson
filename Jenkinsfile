@@ -8,8 +8,6 @@ pipeline {
     }
     environment {
     CHKK_ACCESS_TOKEN = credentials("CHKK_ACCESS_TOKEN")
-    gpg_trust = credentials("gpg-ownertrust")
-    gpg_passphrase = credentials("gpg-passphrase")
     }
     stages {
         stage("Chkk") {
