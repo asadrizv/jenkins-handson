@@ -9,9 +9,9 @@ pipeline {
     stages {
         stage("Chkk") {
             steps {
-               echo ${KUBERNETES}
-               echo ${ENABLE-CHECKS}
-               echo ${SKIP-CHECKS}
+               echo "${KUBERNETES}"
+               echo "${ENABLE-CHECKS}"
+               echo "${SKIP-CHECKS}"
                sh '''#!/bin/bash
                curl -Lo chkk https://chkk-artifacts-downloads.s3.amazonaws.com/dl/v0.0.1/chkk-darwin-amd64;
                export CHKK_ACCESS_TOKEN=$CHKK_ACCESS_TOKEN;
