@@ -4,7 +4,7 @@ pipeline {
         string(defaultValue: 'default', name: 'skip_checks', trim: false)
         string(defaultValue: 'default', name: 'enable_checks', trim: false)
         string(defaultValue: '', name: 'args', trim: true)
-        string(defaultValue: '', name: 'kubernetes', trim: false)
+        string(defaultValue: '', name: 'kubernetes_manifest', trim: false)
     }
     stages {
         stage("Chkk") {
@@ -15,7 +15,7 @@ pipeline {
                curl -Lo chkk https://chkk-artifacts-downloads.s3.amazonaws.com/dl/v0.0.1/chkk-darwin-amd64;
                export CHKK_ACCESS_TOKEN=$CHKK_ACCESS_TOKEN;
                chmod +x chkk;
-               ./chkk --file kubernetes-manifest.yaml
+               ./chkk --file kubernetes-manifest.yaml -r ${params.enable_checks} -s ${params.enable_checks}
                '''
             }
         }
