@@ -14,7 +14,9 @@ pipeline {
                export CHKK_ACCESS_TOKEN=$CHKK_ACCESS_TOKEN;
                chmod +x chkk;
                echo ${kubernetes-manifest}
-               ./chkk --file kubernetes-manifest.yaml --run-check ${params.enable-checks} --skip-check ${param.skip-checks}
+               echo ${enable-checks}
+               echo ${skip-checks}
+               ./chkk --file kubernetes-manifest.yaml --run-check ${enable-checks} --skip-check ${skip-checks}
                '''
             }
         }
