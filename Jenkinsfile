@@ -9,7 +9,6 @@ pipeline {
     stages {
         stage("Chkk") {
             steps {
-               echo "${KUBERNETES-MANIFEST}"
                echo "${ENABLE-CHECKS}"
                echo "${SKIP-CHECKS}"
                sh '''#!/bin/bash
