@@ -1,4 +1,4 @@
-def getOs(){
+def Os(){
     String osname = System.getProperty('os.name');
     if (osname.startsWith('Windows'))
         return 'windows';
@@ -23,26 +23,13 @@ pipeline {
     stages {
         stage("Chkk") {
             steps {
-                script{
-                    if(getOs() == "macosx")
-                    {
-                         sh '''#!/bin/bash
-                         curl -Lo chkk https://chkk-artifacts-downloads.s3.amazonaws.com/dl/v0.0.1/chkk-darwin-amd64;
-                         export CHKK_ACCESS_TOKEN=$CHKK_ACCESS_TOKEN;
-                         chmod +x chkk;
-                         ./chkk -f ${kubernetes_manifest}  -r ${enable_checks} -s ${skip_checks}
-                         '''
-                    }
-                    if(getOs() == "linux")
-                    {
-                         sh '''#!/bin/bash
-                         curl -Lo chkk https://chkk-artifacts-downloads.s3.amazonaws.com/dl/v0.0.1/chkk-linux-amd64;
-                         export CHKK_ACCESS_TOKEN=$CHKK_ACCESS_TOKEN;
-                         chmod +x chkk;
-                         ./chkk -f ${kubernetes_manifest}  -r ${enable_checks} -s ${skip_checks}
-                         '''      
-                    } 
-                }         
+            
+             sh '''#!/bin/bash
+             curl -Lo chkk https://chkk-artifacts-downloads.s3.amazonaws.com/dl/v0.0.1/chkk-darwin-amd64;
+             export CHKK_ACCESS_TOKEN=$CHKK_ACCESS_TOKEN;
+             chmod +x chkk;
+             ./chkk -f ${kubernetes_manifest}  -r ${enable_checks} -s ${skip_checks}
+             '''       
                
             }
         }
